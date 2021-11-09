@@ -34,6 +34,11 @@ configurationOverrides:
   "offset.storage.replication.factor": "3"
   "status.storage.replication.factor": "3"
 
+serviceAccount:
+  create: false
+  name: cp-kafka-connect
+  annotations: {}
+
 ## Kafka Connect JVM Heap Option
 heapOptions: "-Xms512M -Xmx512M"
 
