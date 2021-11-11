@@ -107,7 +107,7 @@ spec:
             - -c
             - |
               /etc/confluent/docker/run &
-              $CUSTOM_SCRIPT_PATH
+              {{ .Values.customScriptPath }}
               sleep infinity
           {{- if .Values.livenessProbe }}
           livenessProbe:
