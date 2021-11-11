@@ -137,3 +137,5 @@ livenessProbe:
   # failureThreshold: 10
 
 customScriptPath:
+
+securityContext: {}
