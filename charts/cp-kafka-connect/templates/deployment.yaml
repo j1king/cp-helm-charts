@@ -118,10 +118,6 @@ spec:
           volumeMounts:
 {{ toYaml .Values.volumeMounts | indent 10 }}
           {{- end }}
-          {{- if .Values.securityContext }}
-          securityContext:
-{{ toYaml .Values.securityContext | trim | indent 12 }}
-          {{- end }}
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
@@ -134,6 +130,10 @@ spec:
       - name: jmx-config
         configMap:
           name: {{ template "cp-kafka-connect.fullname" . }}-jmx-configmap
+      {{- end }}
+      {{- if .Values.securityContext }}
+      securityContext:
+{{ toYaml .Values.securityContext | trim | indent 8 }}
       {{- end }}
       {{- if .Values.nodeSelector }}
       nodeSelector:
