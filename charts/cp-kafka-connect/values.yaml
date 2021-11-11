@@ -43,9 +43,7 @@ serviceAccount:
 heapOptions: "-Xms512M -Xmx512M"
 
 ## Additional env variables
-## CUSTOM_SCRIPT_PATH is the path of the custom shell script to be ran mounted in a volume
-customEnv: {}
-  # CUSTOM_SCRIPT_PATH: /etc/scripts/create-connectors.sh
+customEnv: []
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -126,7 +124,6 @@ secrets:
   # username: kafka123
   # password: connect321
 
-## These values are used only when "customEnv.CUSTOM_SCRIPT_PATH" is defined.
 ## "livenessProbe" is required only for the edge cases where the custom script to be ran takes too much time
 ## and errors by the ENTRYPOINT are ignored by the container
 ## As an example such a similar script is added to "cp-helm-charts/examples/create-connectors.sh"
@@ -138,3 +135,5 @@ livenessProbe:
   # initialDelaySeconds: 30
   # periodSeconds: 5
   # failureThreshold: 10
+
+customScriptPath:

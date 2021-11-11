@@ -94,15 +94,14 @@ spec:
             - name: {{ printf "CONNECT_%s" $key | replace "." "_" | upper | quote }}
               value: {{ $value | quote }}
             {{- end }}
-            {{- range $key, $value := .Values.customEnv }}
-            - name: {{ $key | quote }}
-              value: {{ $value | quote }}
+            {{- if .Values.customEnv }}
+{{ toYaml .Values.customEnv | trim | indent 12 }}
             {{- end }}
             {{- if .Values.jmx.port }}
             - name: KAFKA_JMX_PORT
               value: "{{ .Values.jmx.port }}"
             {{- end }}
-        {{- if .Values.customEnv.CUSTOM_SCRIPT_PATH }}
+        {{- if .Values.customScriptPath }}
           command:
             - /bin/bash
             - -c
