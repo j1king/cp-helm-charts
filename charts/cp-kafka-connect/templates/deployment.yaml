@@ -120,7 +120,7 @@ spec:
           {{- end}}
           {{- if .Values.securityContext }}
           securityContext:
-{{ toYaml .Values.securityContext | indent 12 }}
+{{ toYaml .Values.securityContext | trim | indent 12 }}
           {{- end}}
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
