@@ -49,7 +49,8 @@ spec:
           - {{ .Values.prometheus.jmx.port | quote }}
           - /etc/jmx-kafka-connect/jmx-kafka-connect-prometheus.yml
           ports:
-          - containerPort: {{ .Values.prometheus.jmx.port }}
+          - name: jmx-exporter
+            containerPort: {{ .Values.prometheus.jmx.port }}
           resources:
 {{ toYaml .Values.prometheus.jmx.resources | indent 12 }}
           volumeMounts:
